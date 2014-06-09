@@ -1,0 +1,205 @@
+<html>
+	<head>
+		<title>The Book Shelf</title>
+		<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+		
+		<script>		
+				function validate()
+				{	
+					var first=document.forms["registration"]["fname"].value;
+					var last=document.forms["registration"]["lname"].value;
+					var username=document.forms["registration"]["username"].value;
+					var password=document.forms["registration"]["password"].value;
+					var confirm=document.forms["registration"]["confirm"].value;
+					var address=document.forms["registration"]["address"].value;
+					var suffix=document.forms["registration"]["suffix"].value;
+					var phone=document.forms["registration"]["phone"].value;
+					var email=document.forms["registration"]["email"].value;
+					
+					var letters = /^[A-Za-z]+$/;  
+					var rules = /^[0-9A-Za-z]+$/;
+					
+					if (first=="" || first==null || username=="" || username==null || password=="" || password==null || confirm=="" || confirm==null || address=="" || address==null || suffix=="" || suffix==null) 
+					{
+					alert("Please fill in the blank textbox of the form!");
+					return false;
+					}
+					
+					if (phone == "" || isNaN(phone) || suffix == "" || isNaN(suffix))
+					{
+					alert("Please enter a valid phone number!");
+					return false;
+					}
+					
+					if (!first.match(letters))
+					{
+						alert('First name consists of alphabet only!');
+						return false
+					}
+					
+					if (!last.match(letters) && last.length != 0)
+					{
+						alert('Last name consists of alphabet only!');
+						return false;
+					}
+					
+					if (!username.match(rules))
+					{
+						alert('Username consists of alphabet and numeric only!');
+						return false;
+					}
+					
+					if (!password.match(rules))
+					{
+						alert('Password consists of alphabet and numeric only!');
+						return false;
+					}
+					
+					if (confirm != password)
+					{
+					alert("Please check your password!");
+					return false;
+					}
+					
+					if (password.length < 8) 
+					{
+						alert("Password must be at least 8 characters!");
+						return false;
+					}
+					
+					if (username.length > 20 || username.length < 5)
+					{
+						alert("Username must be at least 5 characters but not more than 20 characters!");
+						return false;
+					}
+				}	
+
+				function validatelogin()
+				{
+					var user = document.forms["login"]["username"].value;
+					var pass = document.forms["login"]["password"].value;
+					
+					if ((user == null || user == "") && (pass == null || pass == ""))
+					{
+						alert("Please enter your username and password!");
+						return false;
+					}
+					else if ((user == null || user == "") && (pass != null || pass != ""))
+					{
+						alert("Please enter your username!");
+						return false;
+					}
+					else if ((user != null || user != "") && (pass == null || pass == ""))
+					{
+						alert("Please enter your password!");
+						return false;
+					}
+				}
+		</script>		
+	</head>
+
+	<body>
+
+	<div id="templatemo_container">
+		<div id="menu_unlogin">
+			<ul>
+				<li><a href="home.php">Home</a></li>
+				<li><a href="registration.html" class="current">Register</a></li>
+				<li><a href="about1.html">About Us</a></li> 
+				<li><a href="contact1.php">Contact</a></li>
+			</ul>
+		</div>
+		
+	<div id="templatemo_header">
+		<div id="templatemo_login">
+			<img src="images/loginsym.png" width="100px" height="30px">
+				<form name="login" action="login.php" onsubmit="return validatelogin()" method="post">
+				<table>
+						<tr>
+							<td><p><strong>Username</strong></p></td>
+							<td width="5%"><p><strong>:</strong></p></td>
+							<td><p><strong>
+							<input type="username" name="username" style="width:130px" class="btn btn-default">
+							</strong></p></td>
+							<td><p style="margin-left:40px"><strong>
+							<input type="submit" class="btn btn-default" name="submit" value="LOGIN" style="width:75px;font-family:arial">
+							</strong></p></td>
+						</tr>
+						<tr>
+							<td><p><strong>Password</strong></p></td>
+							<td width="5%"><p><strong>:</strong></p></td>
+							<td><p><strong>
+							<input type="password" name="password" style="width:130px" class="btn btn-default">
+							</strong></p></td>
+							<td><p style="margin-left:40px"><strong>
+							<input type="reset" name="reset" class="btn btn-default" value="RESET" style="width:75px; font-family:arial">
+							</strong></p></td>
+						</tr>
+				</table>
+				</form>
+		</div>
+	</div> 
+			<div id="register">
+				<p class="registration">REGISTRATION FORM :<p>
+				<br>
+				<br>
+				<br>
+				<p class="registration2"><u>Please fill in the form :</u></p>
+				<br>
+				<form name="registration" action="registration.php" onsubmit="return validate()" method="post">
+					<table>
+						<tr>
+							<td><span style="margin-right : 20px;">First Name</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="text" name="fname" class="btn btn-default"></span></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">Last Name</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="text" name="lname" class="btn btn-default"></span></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">Username</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="text" name="username" maxlength="20" class="btn btn-default"></span></td>
+							<td><font color="ff3f3f" size="2">*must be alphabet or numeric only, at least 5 but not more than 20 characters</font></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">Password</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="password" name="password" class="btn btn-default"></span></td>
+							<td><font color="ff3f3f" size="2">*at least 8 characters and must be alphabet or numeric only</font></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">Confirm Password</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="password" name="confirm" class="btn btn-default"></span></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">Address</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="text" name="address" class="btn btn-default"></span></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">Phone Number</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;">+ <input type="text" class="btn btn-default" name="suffix" maxlength="2" style="width : 30px;"> - <input type="text" name="phone" maxlength="10" class="btn btn-default" style="width:100px;"></span></td>
+						</tr>
+						<tr>
+							<td><span style="margin-right : 20px;">E-Mail</span></td>
+							<td>:</td>
+							<td><span style="margin-left:30px;"><input type="email" name="email" class="btn btn-default" style="width:120px;"></td>
+						</tr>
+					</table>
+					<br>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="submit" value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" class="btn btn-default" value="Clear Fields">
+				</form>
+			</div>
+		  
+			<div id="templatemo_footer">
+				   <a href="home.php">Home</a> | <a href="registration.html">Register</a> | <a href="book1.php">Books</a> | <a href="new.php">New Releases</a> | <a href="about1.html">About Us</a> | <a href="contact1.php">Contact Us</a><br />
+				Copyright &copy; 2013 <b><strong><font color="#fff">The Book Shelf</font></strong></b></div> 
+	</div>
+		
+	</body>
+</html>
